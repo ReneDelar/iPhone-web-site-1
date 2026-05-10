@@ -79,7 +79,6 @@ button {
 /* ============================================
    Reveal-on-scroll variants
    ============================================ */
-/* Default: slide up + fade */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -89,7 +88,6 @@ button {
 }
 .reveal.is-in { opacity: 1; transform: none; }
 
-/* Scale-in variant */
 .reveal--scale {
   opacity: 0;
   transform: scale(0.92);
@@ -98,7 +96,6 @@ button {
 }
 .reveal--scale.is-in { opacity: 1; transform: none; }
 
-/* Blur-in variant */
 .reveal--blur {
   opacity: 0;
   filter: blur(14px);
@@ -109,7 +106,6 @@ button {
 }
 .reveal--blur.is-in { opacity: 1; filter: blur(0); transform: none; }
 
-/* Per-word stagger: каждый .word появляется со своей задержкой */
 .split { display: inline-block; overflow: hidden; vertical-align: top; line-height: 1.05; }
 .word {
   display: inline-block;
@@ -272,11 +268,10 @@ button {
   margin-bottom: 36px;
 }
 
-/* ----- CSS-iPhone (scroll-driven tilt + zoom on mobile) ----- */
 .phone {
   --w: min(220px, 60vw);
   --h: calc(var(--w) * 2.05);
-  --scroll: 0;        /* 0..1, обновляется из JS */
+  --scroll: 0;
   position: relative;
   width: var(--w);
   height: var(--h);
@@ -380,11 +375,8 @@ button {
   text-shadow: 0 2px 12px rgba(255,255,255,.6);
 }
 
-.phone__camera {
-  display: none; /* зарезервировано */
-}
+.phone__camera { display: none; }
 
-/* Скролл-индикатор */
 .hero__scroll {
   margin-top: 40px;
   width: 26px;
@@ -605,6 +597,159 @@ button {
   margin: 16px 0 0;
   font-size: 13px;
   color: var(--ink-dim);
+}
+
+/* ============================================
+   AIRPODS
+   ============================================ */
+.airpods {
+  padding: 80px var(--pad) 100px;
+  border-top: 1px solid var(--border);
+}
+.airpods__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 900px) {
+  .airpods__inner {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    gap: 60px;
+  }
+}
+
+.airpods__visual {
+  position: relative;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  isolation: isolate;
+}
+
+.airpod {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.airpod--left  { animation: bud-float 4s ease-in-out infinite; transform: rotate(-14deg); }
+.airpod--right { animation: bud-float 4s ease-in-out 0.4s infinite reverse; transform: rotate(14deg); }
+
+@keyframes bud-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
+
+.airpod__bud {
+  position: relative;
+  width: 56px;
+  height: 64px;
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  background: linear-gradient(135deg, #ffffff 0%, #ececef 75%, #d8d8de 100%);
+  box-shadow:
+    inset 0 -8px 14px rgba(0,0,0,.08),
+    inset 0 4px 6px rgba(255,255,255,.95),
+    0 14px 30px -12px rgba(0,0,0,.22);
+}
+.airpod__mesh {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #2a2a2e 0%, #0a0a0c 80%);
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.1);
+}
+.airpod__stem {
+  width: 16px;
+  height: 80px;
+  margin-top: -2px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(180deg, #f4f4f6 0%, #d8d8de 100%);
+  box-shadow:
+    inset 0 -4px 8px rgba(0,0,0,.08),
+    inset 1px 0 2px rgba(255,255,255,.6),
+    0 8px 18px -6px rgba(0,0,0,.18);
+}
+
+.wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  margin: -45px 0 0 -45px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,113,227,.35);
+  animation: wave-out 3s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+.wave--1 { animation-delay: 0s; }
+.wave--2 { animation-delay: 1s; }
+.wave--3 { animation-delay: 2s; }
+
+@keyframes wave-out {
+  0%   { transform: scale(.4); opacity: .7; border-width: 3px; }
+  100% { transform: scale(3.4); opacity: 0;  border-width: 1px; }
+}
+
+.airpods__eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+.airpods__title {
+  font-size: clamp(32px, 8vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 18px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.airpods__sub {
+  margin: 0 auto 24px;
+  color: var(--ink-2);
+  font-size: clamp(16px, 4vw, 18px);
+  max-width: 460px;
+}
+@media (min-width: 900px) {
+  .airpods__sub { margin-left: 0; margin-right: 0; }
+}
+.airpods__price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 0 26px;
+}
+@media (min-width: 900px) {
+  .airpods__price { justify-content: flex-start; }
+}
+.airpods__price-from {
+  font-size: 13px;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.airpods__price-value {
+  font-size: clamp(28px, 6vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 /* ============================================
