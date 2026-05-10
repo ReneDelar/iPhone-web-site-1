@@ -58,7 +58,6 @@ function updateScrollFx() {
 
   if (progressFill) progressFill.style.width = (progress * 100) + '%';
 
-  // hero iPhone scroll-tilt
   if (phone && hero) {
     const rect = hero.getBoundingClientRect();
     const heroH = rect.height;
@@ -66,19 +65,13 @@ function updateScrollFx() {
     phone.style.setProperty('--scroll', heroProg.toFixed(3));
   }
 
-  // AirPods scroll story — three phases driven by progress through the track
   if (story && storyTrack) {
     const r = storyTrack.getBoundingClientRect();
     const total = r.height - window.innerHeight;
     const p = total > 0 ? clamp01(-r.top / total) : 0;
-
-    const spread = clamp01(p / 0.30);                 // 0..0.30: buds spread apart
-    const hold   = clamp01((p - 0.30) / 0.40);        // 0.30..0.70: specs panel fades in
-    const close  = clamp01((p - 0.70) / 0.30);        // 0.70..1.00: buds converge to ears, silhouette rises
-
-    story.style.setProperty('--p-spread', spread.toFixed(3));
-    story.style.setProperty('--p-hold',   hold.toFixed(3));
-    story.style.setProperty('--p-close',  close.toFixed(3));
+    story.style.setProperty('--p-spread', clamp01(p / 0.30).toFixed(3));
+    story.style.setProperty('--p-hold',   clamp01((p - 0.30) / 0.40).toFixed(3));
+    story.style.setProperty('--p-close',  clamp01((p - 0.70) / 0.30).toFixed(3));
   }
 
   ticking = false;
@@ -126,4 +119,78 @@ if (phone && hero && supportsHover) {
   hero.addEventListener('mouseleave', () => {
     phone.style.transform = '';
   });
+}
+
+// ============================================================
+//  ORDER FORM — quantity stepper, total, submit, success state
+// ============================================================
+const orderForm = document.querySelector('.order-form');
+const orderSuccess = document.querySelector('.order-success');
+
+if (orderForm) {
+  const PRICE = parseInt(orderForm.dataset.price, 10) || 0;
+  const totalEl = orderForm.querySelector('[data-total]');
+  const qtyInput = orderForm.querySelector('input[name="qty"]');
+  const stepperBtns = orderForm.querySelectorAll('.qty-stepper__btn');
+
+  function formatRub(n) {
+    return n.toLocaleString('ru-RU') + ' ₽';
+  }
+
+  function updateTotal() {
+    let qty = parseInt(qtyInput.value, 10);
+    if (isNaN(qty) || qty < 1) qty = 1;
+    if (qty > 10) qty = 10;
+    qtyInput.value = qty;
+    if (totalEl) totalEl.textContent = formatRub(qty * PRICE);
+  }
+
+  stepperBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cur = parseInt(qtyInput.value, 10) || 1;
+      qtyInput.value = btn.dataset.action === 'inc' ? cur + 1 : cur - 1;
+      updateTotal();
+    });
+  });
+
+  qtyInput.addEventListener('input', updateTotal);
+  qtyInput.addEventListener('blur', updateTotal);
+
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!orderForm.checkValidity()) {
+      orderForm.reportValidity();
+      const firstInvalid = orderForm.querySelector(':invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    const qty = parseInt(qtyInput.value, 10) || 1;
+    const phone = orderForm.elements.phone.value.trim();
+    const orderId = 'AP-' + Math.floor(100000 + Math.random() * 900000);
+    const total = qty * PRICE;
+
+    if (orderSuccess) {
+      orderSuccess.querySelector('[data-success-id]').textContent = orderId;
+      orderSuccess.querySelector('[data-success-phone]').textContent = phone;
+      orderSuccess.querySelector('[data-success-total]').textContent = formatRub(total);
+      orderForm.hidden = true;
+      orderSuccess.hidden = false;
+      orderSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  const resetBtn = document.querySelector('[data-reset-order]');
+  if (resetBtn && orderSuccess) {
+    resetBtn.addEventListener('click', () => {
+      orderForm.reset();
+      updateTotal();
+      orderSuccess.hidden = true;
+      orderForm.hidden = false;
+      orderForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  updateTotal();
 }

@@ -18,7 +18,7 @@
     <nav class="nav__links" aria-label="Основная навигация">
       <a href="index.html#features">iPhone</a>
       <a href="airpods.html" aria-current="page">AirPods</a>
-      <a href="#buy">Купить</a>
+      <a href="#order-form">Заказать</a>
     </nav>
   </header>
 
@@ -77,8 +77,129 @@
           <span class="buy__price-value">24&nbsp;990&nbsp;₽</span>
           <span class="buy__price-note">или&nbsp;2&nbsp;082&nbsp;₽/мес ×&nbsp;12</span>
         </div>
-        <a href="#" class="btn btn--primary btn--block">Оформить заказ</a>
+        <a href="#order-form" class="btn btn--primary btn--block">Оформить заказ</a>
         <p class="buy__small">Бесплатная гравировка на&nbsp;кейсе. Возврат 14&nbsp;дней.</p>
+      </div>
+    </section>
+
+    <section class="order" id="order-form">
+      <div class="order__inner">
+        <h2 class="order__title reveal">Оформление заказа</h2>
+        <p class="order__sub reveal" style="--delay: 80ms">Заполни форму — позвоним в&nbsp;течение 15&nbsp;минут для подтверждения.</p>
+
+        <form class="order-form reveal" style="--delay: 160ms" data-price="24990" novalidate>
+          <div class="order-form__product">
+            <div class="order-form__product-mini" aria-hidden="true">
+              <div class="airpod airpod--mini">
+                <div class="airpod__bud"><span class="airpod__mesh"></span></div>
+                <div class="airpod__stem"></div>
+              </div>
+            </div>
+            <div class="order-form__product-text">
+              <p class="order-form__product-name">AirPods Pro 2</p>
+              <p class="order-form__product-price">24&nbsp;990&nbsp;₽</p>
+            </div>
+            <div class="qty-stepper" role="group" aria-label="Количество">
+              <button type="button" class="qty-stepper__btn" data-action="dec" aria-label="Уменьшить">−</button>
+              <input type="number" name="qty" value="1" min="1" max="10" inputmode="numeric" aria-label="Количество" />
+              <button type="button" class="qty-stepper__btn" data-action="inc" aria-label="Увеличить">+</button>
+            </div>
+          </div>
+
+          <div class="order-form__grid">
+            <label class="field">
+              <span class="field__label">Имя</span>
+              <input type="text" name="name" required autocomplete="name" placeholder="Иван" />
+            </label>
+            <label class="field">
+              <span class="field__label">Телефон</span>
+              <input type="tel" name="phone" required autocomplete="tel" placeholder="+7 (___) ___-__-__" pattern="[+0-9\s\-\(\)]{7,}" />
+            </label>
+            <label class="field field--full">
+              <span class="field__label">Email <span class="field__optional">(необязательно)</span></span>
+              <input type="email" name="email" autocomplete="email" placeholder="ivan@example.com" />
+            </label>
+            <label class="field">
+              <span class="field__label">Город</span>
+              <input type="text" name="city" required autocomplete="address-level2" placeholder="Москва" />
+            </label>
+            <label class="field">
+              <span class="field__label">Индекс <span class="field__optional">(необяз.)</span></span>
+              <input type="text" name="zip" autocomplete="postal-code" placeholder="123456" inputmode="numeric" pattern="[0-9]{4,10}" />
+            </label>
+            <label class="field field--full">
+              <span class="field__label">Адрес доставки</span>
+              <input type="text" name="address" required autocomplete="street-address" placeholder="ул. Примерная, д.&nbsp;12, кв.&nbsp;34" />
+            </label>
+          </div>
+
+          <fieldset class="order-form__radios">
+            <legend>Доставка</legend>
+            <label class="radio-card">
+              <input type="radio" name="delivery" value="courier" checked />
+              <div class="radio-card__body">
+                <b>Курьер до&nbsp;двери</b>
+                <span>Завтра, бесплатно</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="delivery" value="pickup" />
+              <div class="radio-card__body">
+                <b>Самовывоз</b>
+                <span>Сегодня из&nbsp;магазина iStore</span>
+              </div>
+            </label>
+          </fieldset>
+
+          <fieldset class="order-form__radios">
+            <legend>Оплата</legend>
+            <label class="radio-card">
+              <input type="radio" name="payment" value="card" checked />
+              <div class="radio-card__body">
+                <b>Картой онлайн</b>
+                <span>Visa, Mastercard, Мир</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="payment" value="cash" />
+              <div class="radio-card__body">
+                <b>При получении</b>
+                <span>Наличные или&nbsp;карта</span>
+              </div>
+            </label>
+          </fieldset>
+
+          <label class="field">
+            <span class="field__label">Комментарий <span class="field__optional">(необяз.)</span></span>
+            <textarea name="comment" rows="3" placeholder="Что-нибудь для курьера"></textarea>
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox" name="consent" required />
+            <span>Согласен на&nbsp;обработку персональных данных</span>
+          </label>
+
+          <div class="order-form__total">
+            <span class="order-form__total-label">Итого</span>
+            <strong class="order-form__total-value" data-total>24&nbsp;990&nbsp;₽</strong>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block">Подтвердить заказ</button>
+        </form>
+
+        <div class="order-success" hidden role="status" aria-live="polite">
+          <div class="order-success__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+              <circle cx="32" cy="32" r="28" />
+              <path d="M20 33l8 8 16-18" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="order-success__title">Заказ принят!</h3>
+          <p class="order-success__text">Мы позвоним на&nbsp;<span data-success-phone></span> в&nbsp;течение 15&nbsp;минут для подтверждения.</p>
+          <p class="order-success__order-id">Номер заказа: <strong data-success-id></strong></p>
+          <p class="order-success__total">Сумма: <strong data-success-total></strong></p>
+          <button type="button" class="btn btn--ghost order-success__again" data-reset-order>Оформить ещё</button>
+        </div>
       </div>
     </section>
   </main>
