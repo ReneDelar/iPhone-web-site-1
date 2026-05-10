@@ -36,15 +36,15 @@ button {
   --accent-3: #ff5d8f;
   --ink: #1d1d1f;
   --ink-2: #424246;
-  --ink-dim: #6e6e73;
+  --ink-dim: #86868b;
   --bg: #ffffff;
-  --bg-soft: #f5f5f7;
+  --bg-soft: #ffffff;
   --bg-card: #ffffff;
-  --border: rgba(0,0,0,0.08);
-  --border-strong: rgba(0,0,0,0.12);
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
-  --shadow-md: 0 8px 24px -8px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.04);
-  --shadow-lg: 0 30px 60px -30px rgba(0,0,0,0.25);
+  --border: rgba(0,0,0,0.06);
+  --border-strong: rgba(0,0,0,0.1);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.03), 0 4px 14px rgba(0,0,0,0.04);
+  --shadow-md: 0 10px 28px -10px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.03);
+  --shadow-lg: 0 30px 70px -30px rgba(0,0,0,0.18);
   --radius: 18px;
   --radius-lg: 28px;
   --maxw: 1120px;
@@ -146,9 +146,9 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 14px var(--pad);
-  background: rgba(255,255,255,0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
   border-bottom: 1px solid var(--border);
 }
 .nav__logo {
@@ -192,11 +192,11 @@ button {
 }
 .btn--primary:active { transform: translateY(0); }
 .btn--ghost {
-  background: var(--bg-soft);
+  background: #ffffff;
   color: var(--ink);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
 }
-.btn--ghost:hover { background: #ebebef; }
+.btn--ghost:hover { background: #f5f5f7; border-color: rgba(0,0,0,0.18); }
 .btn--block { display: flex; width: 100%; padding: 16px 24px; font-size: 16px; }
 
 /* ============================================
@@ -315,13 +315,13 @@ button {
   height: 100%;
   border-radius: calc(var(--w) * 0.18);
   background:
-    linear-gradient(135deg, #f0f0f3 0%, #d8d8de 50%, #b8b8c0 100%);
+    linear-gradient(135deg, #ffffff 0%, #ececef 60%, #d4d4d8 100%);
   padding: 8px;
   box-shadow:
-    inset 0 0 0 1.5px rgba(255,255,255,.6),
-    inset 0 -10px 30px rgba(0,0,0,.08),
-    0 30px 60px -20px rgba(0,0,0,.25),
-    0 0 60px rgba(0,113,227,.12);
+    inset 0 0 0 1px rgba(255,255,255,.9),
+    inset 0 -10px 30px rgba(0,0,0,.05),
+    0 30px 60px -25px rgba(0,0,0,.18),
+    0 0 60px rgba(0,113,227,.08);
 }
 .phone__body::before {
   content: '';
@@ -338,18 +338,17 @@ button {
   height: 100%;
   border-radius: calc(var(--w) * 0.14);
   overflow: hidden;
-  background: #000;
+  background: #fafafa;
 }
 
 .phone__wallpaper {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 30% 20%, #b06cff 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, #2997ff 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, #ff7aa8 0%, transparent 60%),
-    #0a0a18;
-  filter: saturate(1.1);
+    radial-gradient(circle at 30% 20%, #cfe1ff 0%, transparent 55%),
+    radial-gradient(circle at 70% 60%, #e3d4ff 0%, transparent 55%),
+    radial-gradient(circle at 50% 90%, #ffd6e3 0%, transparent 60%),
+    #ffffff;
   animation: wallpaper-shift 8s ease-in-out infinite;
 }
 @keyframes wallpaper-shift {
@@ -362,9 +361,9 @@ button {
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  width: 35%;
-  height: 22px;
-  background: #000;
+  width: 30%;
+  height: 18px;
+  background: #1d1d1f;
   border-radius: 999px;
   z-index: 2;
 }
@@ -374,11 +373,11 @@ button {
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  color: #fff;
+  color: #1d1d1f;
   font-size: calc(var(--w) * 0.09);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+  text-shadow: 0 2px 12px rgba(255,255,255,.6);
 }
 
 .phone__camera {
@@ -483,11 +482,11 @@ button {
   place-items: center;
   margin-bottom: 18px;
   color: var(--accent);
-  background: rgba(0,113,227,.1);
+  background: rgba(0,113,227,.08);
 }
-.feature__icon--cam { color: #8b5cf6; background: rgba(139,92,246,.1); }
-.feature__icon--bat { color: #10b981; background: rgba(16,185,129,.1); }
-.feature__icon--ti  { color: #ff5d8f; background: rgba(255,93,143,.1); }
+.feature__icon--cam { color: #8b5cf6; background: rgba(139,92,246,.08); }
+.feature__icon--bat { color: #10b981; background: rgba(16,185,129,.08); }
+.feature__icon--ti  { color: #ff5d8f; background: rgba(255,93,143,.08); }
 .feature__icon svg { width: 32px; height: 32px; }
 
 .feature h3 {
