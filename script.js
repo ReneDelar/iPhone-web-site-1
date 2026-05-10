@@ -1,5 +1,5 @@
 // ============================================================
-//  Заголовки: разбиваем на слова, оборачиваем в <span class="word">
+//  Headings: split into per-word spans for staggered reveal
 // ============================================================
 const splits = document.querySelectorAll('[data-split]');
 splits.forEach((el) => {
@@ -16,9 +16,7 @@ splits.forEach((el) => {
 });
 
 // ============================================================
-//  Reveal-on-scroll: универсально для .reveal, .reveal--scale,
-//  .reveal--blur и .split (per-word stagger срабатывает по .is-in
-//  на самом контейнере)
+//  Reveal-on-scroll
 // ============================================================
 const animated = document.querySelectorAll(
   '.reveal, .reveal--scale, .reveal--blur, .split'
@@ -42,10 +40,16 @@ if ('IntersectionObserver' in window && animated.length) {
 }
 
 // ============================================================
-//  Прогресс-бар скролла (мобильный + десктоп)
+//  Scroll-driven effects: progress bar, hero phone, AirPods story
 // ============================================================
 const progressFill = document.querySelector('.scroll-progress__fill');
+const phone = document.querySelector('.phone');
+const hero = document.querySelector('.hero');
+const story = document.querySelector('.airpods-story');
+const storyTrack = story && story.querySelector('.airpods-story__track');
 let ticking = false;
+
+function clamp01(x) { return Math.min(Math.max(x, 0), 1); }
 
 function updateScrollFx() {
   const scrollY = window.scrollY;
@@ -54,21 +58,31 @@ function updateScrollFx() {
 
   if (progressFill) progressFill.style.width = (progress * 100) + '%';
 
-  // ----- Скролл-связанная анимация iPhone в hero -----
-  // var --scroll: 0..1 в пределах hero-секции
+  // hero iPhone scroll-tilt
   if (phone && hero) {
     const rect = hero.getBoundingClientRect();
     const heroH = rect.height;
-    // 0 в самом верху, 1 — когда низ hero достиг верха viewport
-    const heroProg = Math.min(Math.max(-rect.top / heroH, 0), 1);
+    const heroProg = clamp01(-rect.top / heroH);
     phone.style.setProperty('--scroll', heroProg.toFixed(3));
+  }
+
+  // AirPods scroll story — three phases driven by progress through the track
+  if (story && storyTrack) {
+    const r = storyTrack.getBoundingClientRect();
+    const total = r.height - window.innerHeight;
+    const p = total > 0 ? clamp01(-r.top / total) : 0;
+
+    const spread = clamp01(p / 0.30);                 // 0..0.30: buds spread apart
+    const hold   = clamp01((p - 0.30) / 0.40);        // 0.30..0.70: specs panel fades in
+    const close  = clamp01((p - 0.70) / 0.30);        // 0.70..1.00: buds converge to ears, silhouette rises
+
+    story.style.setProperty('--p-spread', spread.toFixed(3));
+    story.style.setProperty('--p-hold',   hold.toFixed(3));
+    story.style.setProperty('--p-close',  close.toFixed(3));
   }
 
   ticking = false;
 }
-
-const phone = document.querySelector('.phone');
-const hero = document.querySelector('.hero');
 
 function onScroll() {
   if (!ticking) {
@@ -82,7 +96,7 @@ window.addEventListener('resize', onScroll);
 updateScrollFx();
 
 // ============================================================
-//  Свотчи цвета
+//  Color swatches (iPhone buy block)
 // ============================================================
 const swatches = document.querySelectorAll('.swatch');
 swatches.forEach((sw) => {
@@ -97,7 +111,7 @@ swatches.forEach((sw) => {
 });
 
 // ============================================================
-//  Параллакс-наклон iPhone от курсора (только десктоп с hover)
+//  Pointer parallax for the hero iPhone (desktop hover only)
 // ============================================================
 const supportsHover = window.matchMedia('(hover: hover) and (min-width: 900px)').matches;
 if (phone && hero && supportsHover) {

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="AirPods Pro 2 — активное шумоподавление, пространственное аудио." />
+  <title>AirPods Pro 2 — iStore</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress__fill"></div>
+  </div>
+
+  <header class="nav">
+    <a class="nav__logo" href="index.html">iStore</a>
+    <nav class="nav__links" aria-label="Основная навигация">
+      <a href="index.html#features">iPhone</a>
+      <a href="airpods.html" aria-current="page">AirPods</a>
+      <a href="#buy">Купить</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="story-hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <p class="hero__eyebrow reveal">AirPods Pro 2</p>
+      <h1 class="story-hero__title reveal--blur" style="--delay: 120ms">Магия в&nbsp;твоих&nbsp;ушах.</h1>
+      <p class="story-hero__sub reveal" style="--delay: 280ms">
+        Прокрути страницу — и&nbsp;увидишь, как они работают.
+      </p>
+      <div class="story-hero__hint" aria-hidden="true">
+        <span>Скролль</span>
+        <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
+          <path d="M7 1v18m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="airpods-story" aria-label="Демонстрация AirPods Pro">
+      <div class="airpods-story__track">
+        <div class="airpods-story__viewport">
+          <div class="silhouette" aria-hidden="true">
+            <div class="silhouette__head"></div>
+            <div class="silhouette__body"></div>
+          </div>
+
+          <div class="story-specs" aria-live="polite">
+            <h2 class="story-specs__title">Что внутри</h2>
+            <ul class="story-specs__list">
+              <li><b>Чип H2</b><span>В&nbsp;2× мощнее активное шумоподавление и&nbsp;адаптивный режим.</span></li>
+              <li><b>6 часов</b><span>Воспроизведение на&nbsp;одном заряде. До&nbsp;30&nbsp;ч с&nbsp;кейсом.</span></li>
+              <li><b>Lossless</b><span>Аудио без&nbsp;потерь с&nbsp;ультранизкой задержкой в&nbsp;Vision Pro.</span></li>
+              <li><b>USB-C, IP54</b><span>Зарядка кейса. Защита от пыли и&nbsp;брызг.</span></li>
+            </ul>
+          </div>
+
+          <div class="story-bud story-bud--left" aria-hidden="true">
+            <div class="airpod__bud"><span class="airpod__mesh"></span></div>
+            <div class="airpod__stem"></div>
+          </div>
+          <div class="story-bud story-bud--right" aria-hidden="true">
+            <div class="airpod__bud"><span class="airpod__mesh"></span></div>
+            <div class="airpod__stem"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="buy" id="buy">
+      <div class="buy__card reveal--blur">
+        <p class="buy__eyebrow">Доставка за&nbsp;1&nbsp;день</p>
+        <h2 class="buy__title split" data-split>Готов их услышать?</h2>
+        <div class="buy__price">
+          <span class="buy__price-from">от</span>
+          <span class="buy__price-value">24&nbsp;990&nbsp;₽</span>
+          <span class="buy__price-note">или&nbsp;2&nbsp;082&nbsp;₽/мес ×&nbsp;12</span>
+        </div>
+        <a href="#" class="btn btn--primary btn--block">Оформить заказ</a>
+        <p class="buy__small">Бесплатная гравировка на&nbsp;кейсе. Возврат 14&nbsp;дней.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 iStore. Не&nbsp;является публичной офертой.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
