@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="iPhone 16 Pro — титан, чип A18 Pro, камера 48 Мп. Купить с доставкой за 1 день." />
+  <title>iPhone 16 Pro — Титан. Скорость. Камера.</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="nav__logo" href="#">iStore</a>
+    <nav class="nav__links" aria-label="Основная навигация">
+      <a href="#features">Возможности</a>
+      <a href="#buy">Купить</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== БЛОК 1: HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow reveal">Новинка</p>
+        <h1 class="hero__title">
+          <span class="reveal" style="--delay: 80ms">iPhone 16 Pro.</span>
+          <span class="reveal hero__title--accent" style="--delay: 200ms">Титан.</span>
+          <span class="reveal" style="--delay: 320ms">Скорость.</span>
+        </h1>
+        <p class="hero__sub reveal" style="--delay: 480ms">
+          Корпус из титана пятого класса. Чип&nbsp;A18&nbsp;Pro. Главная камера 48&nbsp;Мп
+          с&nbsp;5-кратным телевиком.
+        </p>
+        <div class="hero__cta reveal" style="--delay: 600ms">
+          <a class="btn btn--primary" href="#buy">Купить от&nbsp;99&nbsp;990&nbsp;₽</a>
+          <a class="btn btn--ghost" href="#features">Узнать&nbsp;больше</a>
+        </div>
+      </div>
+
+      <!-- 3D-фейк iPhone из чистого CSS -->
+      <div class="phone" aria-hidden="true">
+        <div class="phone__shadow"></div>
+        <div class="phone__body">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="phone__wallpaper"></div>
+            <div class="phone__time">9:41</div>
+          </div>
+          <div class="phone__camera">
+            <span class="phone__lens phone__lens--1"></span>
+            <span class="phone__lens phone__lens--2"></span>
+            <span class="phone__lens phone__lens--3"></span>
+            <span class="phone__flash"></span>
+          </div>
+        </div>
+      </div>
+
+      <button class="hero__scroll" aria-label="Прокрутить вниз">
+        <span></span>
+      </button>
+    </section>
+
+    <!-- ========== БЛОК 2: FEATURES ========== -->
+    <section class="features" id="features">
+      <h2 class="section-title reveal">Что внутри</h2>
+
+      <div class="features__grid">
+        <article class="feature reveal" style="--delay: 0ms">
+          <div class="feature__icon feature__icon--chip">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="16" y="16" width="32" height="32" rx="4" />
+              <rect x="24" y="24" width="16" height="16" rx="2" />
+              <path d="M22 8v8M32 8v8M42 8v8M22 48v8M32 48v8M42 48v8M8 22h8M8 32h8M8 42h8M48 22h8M48 32h8M48 42h8" />
+            </svg>
+          </div>
+          <h3>A18 Pro</h3>
+          <p>6-ядерный CPU и 16-ядерный нейродвижок. До&nbsp;2× быстрее в&nbsp;играх.</p>
+        </article>
+
+        <article class="feature reveal" style="--delay: 120ms">
+          <div class="feature__icon feature__icon--cam">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="32" cy="32" r="20" />
+              <circle cx="32" cy="32" r="10" />
+              <circle cx="32" cy="32" r="3" fill="currentColor" />
+            </svg>
+          </div>
+          <h3>48 Мп</h3>
+          <p>Главная камера Fusion с&nbsp;5× телеобъективом и&nbsp;ночным режимом.</p>
+        </article>
+
+        <article class="feature reveal" style="--delay: 240ms">
+          <div class="feature__icon feature__icon--bat">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="8" y="20" width="44" height="24" rx="4" />
+              <rect x="52" y="26" width="4" height="12" rx="1" fill="currentColor" />
+              <path d="M14 26l8 6-6 4 8 6" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>33 часа</h3>
+          <p>До&nbsp;33&nbsp;часов воспроизведения видео. Зарядка USB-C&nbsp;до&nbsp;50% за&nbsp;30&nbsp;мин.</p>
+        </article>
+
+        <article class="feature reveal" style="--delay: 360ms">
+          <div class="feature__icon feature__icon--ti">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M32 6L8 18v14c0 14 10 22 24 26 14-4 24-12 24-26V18L32 6z" />
+              <path d="M22 32l8 8 14-16" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Титан</h3>
+          <p>Корпус из&nbsp;титана 5&nbsp;класса. Прочнее и&nbsp;легче на&nbsp;19% относительно стали.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== БЛОК 3: CTA / BUY ========== -->
+    <section class="buy" id="buy">
+      <div class="buy__card reveal">
+        <p class="buy__eyebrow">Доставка за&nbsp;1&nbsp;день</p>
+        <h2 class="buy__title">Готов взять свой?</h2>
+
+        <div class="buy__colors" role="radiogroup" aria-label="Цвет">
+          <button class="swatch swatch--natural is-active" role="radio" aria-checked="true" aria-label="Натуральный титан"></button>
+          <button class="swatch swatch--blue" role="radio" aria-checked="false" aria-label="Синий титан"></button>
+          <button class="swatch swatch--white" role="radio" aria-checked="false" aria-label="Белый титан"></button>
+          <button class="swatch swatch--black" role="radio" aria-checked="false" aria-label="Чёрный титан"></button>
+        </div>
+
+        <div class="buy__price">
+          <span class="buy__price-from">от</span>
+          <span class="buy__price-value">99&nbsp;990&nbsp;₽</span>
+          <span class="buy__price-note">или&nbsp;8&nbsp;332&nbsp;₽/мес ×&nbsp;12</span>
+        </div>
+
+        <a href="#" class="btn btn--primary btn--block">Оформить заказ</a>
+        <p class="buy__small">Бесплатная гравировка. Возврат в&nbsp;течение 14&nbsp;дней.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 iStore. Не&nbsp;является публичной офертой.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
